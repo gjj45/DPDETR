@@ -1,0 +1,26 @@
+metric: RBOX
+num_classes: 5
+
+TrainDataset:
+  !Mutisprctral_COCODataSet_Paired
+    vis_image_dir: train/trainimg
+    ir_image_dir : train/trainimgr
+    anno_path_vis: train_vis_segmentation.json
+    anno_path_ir: train_ir_segmentation.json
+    dataset_dir: /data/hdd/guojunjie/paddle_detection_datasets/drone_vechal/
+    data_fields: ['image', 'gt_bbox_vis','gt_bbox_ir', 'gt_class', 'is_crowd', 'gt_poly_vis','gt_poly_ir']
+    #allow_empty: true
+
+EvalDataset:
+  !Mutisprctral_COCODataSet
+    vis_image_dir: val/valimg
+    ir_image_dir: val/valimgr
+    anno_path: val_ir_segmentation.json
+    dataset_dir: /data/hdd/guojunjie/paddle_detection_datasets/drone_vechal/
+    data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd', 'gt_poly']
+    #allow_empty: true
+
+TestDataset:
+  !Multi_ImageFolder
+    anno_path: label_list.txt # also support txt (like VOC's label_list.txt)
+    dataset_dir: /data/hdd/guojunjie/paddle_detection_datasets/drone_vechal/ # if set, anno_path will be 'dataset_dir/anno_path'

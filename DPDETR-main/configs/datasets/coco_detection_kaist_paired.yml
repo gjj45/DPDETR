@@ -1,0 +1,25 @@
+metric: COCO
+num_classes: 1
+
+TrainDataset:
+  name: Mutisprctral_COCODataSet_Paired
+  vis_image_dir: train/visible
+  ir_image_dir : train/lwir
+  anno_path_vis: annotations_paired/train_vis_nounpaired.json
+  anno_path_ir: annotations_paired/train_ir_nounpaired.json
+  dataset_dir: /data/hdd/guojunjie/paddle_detection_datasets/dataset/coco_kaist_paired/
+  data_fields: ['image', 'gt_bbox_vis', 'gt_bbox_ir', 'gt_class', 'is_crowd']
+  allow_empty: true
+
+EvalDataset:
+  name: Mutisprctral_COCODataSet
+  vis_image_dir: val/visible
+  ir_image_dir: val/lwir
+  anno_path: annotations_paired/val.json
+  dataset_dir: /data/hdd/guojunjie/paddle_detection_datasets/dataset/coco_kaist_paired/
+  allow_empty: true
+
+TestDataset:
+  name: Multi_ImageFolder
+  anno_path: annotations_paired/label_list.txt # also support txt (like VOC's label_list.txt)
+  dataset_dir: /data/hdd/guojunjie/paddle_detection_datasets/dataset/coco_kaist/ # if set, anno_path will be 'dataset_dir/anno_path'

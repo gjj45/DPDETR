@@ -1,0 +1,78 @@
+architecture: DPDETR
+pretrain_weights: https://paddledet.bj.bcebos.com/models/pretrained/ResNet50_vd_ssld_v2_pretrained.pdparams
+norm_type: sync_bn
+use_ema: True
+ema_decay: 0.9999
+ema_decay_type: "exponential"
+ema_filter_no_grad: True
+hidden_dim: 256
+use_focal_loss: True
+
+
+DPDETR:
+  backbone_vis: ResNet
+  backbone_ir: ResNet
+  neck_vis: HybridEncoder
+  neck_ir: HybridEncoder
+  transformer: DPDETR_obb_Transformer
+  detr_head: DINOHead_obb_Decoupled_Position
+  post_process: DETRPostProcess_obb_Decoupled_Position
+
+ResNet:
+  # index 0 stands for res2
+  depth: 50
+  variant: d
+  norm_type: bn
+  freeze_at: 0
+  return_idx: [1, 2, 3]
+  lr_mult_list: [0.1, 0.1, 0.1, 0.1]
+  num_stages: 4
+  freeze_stem_only: True
+
+HybridEncoder:
+  hidden_dim: 256
+  use_encoder_idx: [2]
+  num_encoder_layers: 1
+  encoder_layer:
+    name: TransformerLayer
+    d_model: 256
+    nhead: 8
+    dim_feedforward: 1024
+    dropout: 0.
+    activation: 'gelu'
+  expansion: 1.0
+
+
+DPDETR_obb_Transformer:
+  num_queries: 300
+  position_embed_type: sine
+  feat_strides: [8, 16, 32]
+  num_levels: 3
+
+  visir_feat_strides: [ 8, 16, 32, 8, 16, 32 ]
+  num_visir_levels: 6
+  proj_all: False
+
+  nhead: 8
+  num_decoder_layers: 6
+  dim_feedforward: 1024
+  dropout: 0.0
+  activation: relu
+  num_denoising: 100
+  label_noise_ratio: 0.5
+  box_noise_scale: 1.0
+  angle_noise_scale: 0.03
+  learnt_init_query: False
+
+DINOHead_obb_Decoupled_Position:
+  loss:
+    name: DINOLoss_obb_Decoupled_Position
+    loss_coeff: {class: 1, bbox: 5, giou: 2}
+    aux_loss: True
+    use_vfl: True
+    matcher:
+      name: HungarianMatcher_obb_Decoupled_Position
+      matcher_coeff: {class: 2, bbox: 5, giou: 2}
+
+DETRPostProcess_obb_Decoupled_Position:
+  num_top_queries: 300

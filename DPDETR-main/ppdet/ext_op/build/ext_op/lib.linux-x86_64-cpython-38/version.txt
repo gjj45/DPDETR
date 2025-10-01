@@ -1,0 +1,44 @@
+{
+    "define_macros": [],
+    "ext_op.so": "589042b5bee0be78d22ae6a36eb915ff",
+    "extra_compile_args": {
+        "cxx": [
+            "-DPADDLE_WITH_CUDA",
+            "-w",
+            "-DPADDLE_WITH_CUSTOM_KERNEL"
+        ],
+        "nvcc": [
+            "-w",
+            "-DPADDLE_WITH_CUSTOM_KERNEL"
+        ]
+    },
+    "extra_link_args": [
+        "-l:libpaddle.so",
+        "-lcudart"
+    ],
+    "include_dirs": [
+        "/home/guojunjie/anaconda3/envs/DAMS_DETR_main/lib/python3.8/site-packages/paddle/include",
+        "/home/guojunjie/anaconda3/envs/DAMS_DETR_main/lib/python3.8/site-packages/paddle/include/third_party",
+        "/home/guojunjie/cuda-11.7/include",
+        "/home/guojunjie/anaconda3/envs/DAMS_DETR_main/include/python3.8"
+    ],
+    "library_dirs": [
+        "/home/guojunjie/anaconda3/envs/DAMS_DETR_main/lib/python3.8/site-packages/paddle/libs",
+        "/home/guojunjie/cuda-11.7/lib64",
+        "/home/guojunjie/anaconda3/envs/DAMS_DETR_main/lib/python3.8/site-packages/paddle/fluid"
+    ],
+    "runtime_library_dirs": [
+        "/home/guojunjie/anaconda3/envs/DAMS_DETR_main/lib/python3.8/site-packages/paddle/libs",
+        "/home/guojunjie/cuda-11.7/lib64",
+        "/home/guojunjie/anaconda3/envs/DAMS_DETR_main/lib/python3.8/site-packages/paddle/fluid"
+    ],
+    "sources": [
+        "/data/hdd/guojunjie/DAMSDet_main/DPDETR_SourceCode/DPDETR-main/ppdet/ext_op/csrc/rbox_iou/rbox_iou.cc",
+        "/data/hdd/guojunjie/DAMSDet_main/DPDETR_SourceCode/DPDETR-main/ppdet/ext_op/csrc/rbox_iou/rbox_iou.cu",
+        "/data/hdd/guojunjie/DAMSDet_main/DPDETR_SourceCode/DPDETR-main/ppdet/ext_op/csrc/matched_rbox_iou/matched_rbox_iou.cc",
+        "/data/hdd/guojunjie/DAMSDet_main/DPDETR_SourceCode/DPDETR-main/ppdet/ext_op/csrc/matched_rbox_iou/matched_rbox_iou.cu",
+        "/data/hdd/guojunjie/DAMSDet_main/DPDETR_SourceCode/DPDETR-main/ppdet/ext_op/csrc/nms_rotated/nms_rotated.cc",
+        "/data/hdd/guojunjie/DAMSDet_main/DPDETR_SourceCode/DPDETR-main/ppdet/ext_op/csrc/nms_rotated/nms_rotated.cu"
+    ],
+    "undef_macros": []
+}

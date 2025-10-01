@@ -1,0 +1,10 @@
+_BASE_: [
+  '../datasets/rbox_detection_drone-vechal_paired.yml',
+  '../runtime_dronev.yml',
+  '_base_/optimizer.yml',
+  '_base_/dpdetr_obb_r50vd.yml',
+  '_base_/dpdetr_obb_reader.yml',
+]
+
+find_unused_parameters: True
+log_iter: 200
