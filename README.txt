@@ -41,7 +41,7 @@ A brief description:
 ######################################################################################################################################################################
 CODE USE
 
-1.We provide annotated json files for each dataset, so you only need to download each dataset images from internet ("M3FD", "FLIR_align", "LLVIP", "VEDAI"). Then, you need to put each dataset imgs in the "DPDETR-main/dataset/.../" directory,
+1.We provide annotated json files for each dataset, so you only need to download each dataset images from internet. Then, you need to put each dataset imgs in the "DPDETR-main/dataset/.../" directory,
 *specificly for Drone-Vehicle : put train infrared images to "DPDETR-main/dataset/rbox_Drone_Vehicle/train/trainimgr", train visible images to "DPDETR-main/dataset/rbox_Drone_Vehicle/train/trainimg", validation infrared images to "DPDETR-main/dataset/rbox_Drone_Vehicle/val/valimgr", validation visible images to "DPDETR-main/dataset/rbox_Drone_Vehicle/val/valimg".
 
 *specificly for KAIST: put train infrared images to "DPDETR-main/dataset/coco_kaist_paired/train/lwir/", train visible images to "DPDETR-main/dataset/coco_kaist_paired/train/visible/", validation infrared images to "DPDETR-main/dataset/coco_kaist_paired/val/lwir/", validation visible images to "DPDETR-main/dataset/coco_kaist_paired/val/visible/"
