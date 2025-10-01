@@ -1,3 +1,9 @@
+PAPER  DPDETR: Decoupled Position Detection Transformer for Infrared-Visible Object Detection
+
+download  ResNet50_vd_ssld_v2_pretrained.pdparams  https://drive.google.com/file/d/1v3vsmBdu9clUDSORFIYn7yjghsfn_S_P/view?usp=sharing
+download  coco_pretrain_weights.pdparams   https://drive.google.com/file/d/13IfjgrLvoUQq8CCoMDdZ3skUmmHHWLcu/view?usp=drive_link
+download   drone_vehicle_best_model.pdparams  https://drive.google.com/file/d/1UrhIQLmGWaHpWCMs7OoNf8MvCMyCR-kY/view?usp=sharing
+
 GET START
 
 ** "DDPDETR-main.zip" is our project code file.
